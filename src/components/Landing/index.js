@@ -15,8 +15,8 @@ const LandingPage = () => {
         };
         
         
-        const dateTemps = lastSevenDays.map((date) => {
-            return <DateTemp date={date}></DateTemp>
+        const dateTemps = lastSevenDays.map((date, index) => {
+            return <DateTemp key={index} date={date}></DateTemp>
         })
 
         return dateTemps;
