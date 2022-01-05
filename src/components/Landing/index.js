@@ -1,10 +1,45 @@
 import {} from 'react-bootstrap';
 
-const LandingPage = ({weatherData}) => {
+
+import DateTemp from '../DateTemp';
+
+const LandingPage = () => {
+
+    const getLastSevenDays = () => {
+        const lastSevenDays = [];
+        for (let i=0; i<7; i++) {
+            const d = new Date();
+            d.setDate(d.getDate() - i);
+            lastSevenDays.push(dateIntoString(d));
+            
+        };
+        
+        
+        const dateTemps = lastSevenDays.map((date) => {
+            return <DateTemp date={date}></DateTemp>
+        })
+
+        return dateTemps;
+    };
+
+    const dateIntoString = (d) => {
+        let month = '' + (d.getMonth() + 1);
+        let day = '' + d.getDate();
+        const year = d.getFullYear();
+        if (month.length < 2) 
+            {month = '0' + month;}
+        if (day.length < 2) 
+            {day = '0' + day;}
+        const date = [year,month,day].join('-');
+        return date;
+    };
+
+
     return (
-        <div className='container'>
-            <p>The temperature in {weatherData.location.name} on {weatherData.forecast.forecastday[0].date} at {weatherData.forecast.forecastday[0].hour[12].time} was {weatherData.forecast.forecastday[0].hour[12].temp_c} degrees C </p>
-            {/* <p>The temperature at {weatherData.forecast.forecastday.hour[12].time} was</p> */}
+        <div className='container p-4'>
+            
+            
+            {getLastSevenDays()}
         </div>
     )
 };
