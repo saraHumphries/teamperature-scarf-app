@@ -22,8 +22,8 @@ const DateTemp = ({date}) => {
                     <div className="col-2"><img className='img-thumbnail' src={weatherData.forecast.forecastday[0].day.condition.icon}></img></div>
                     
                         <p className="col-5 my-auto">{date}</p>
-                    
-                    <p className="col-4 my-auto">{weatherData.forecast.forecastday[0].hour[12].temp_c} &#8451; </p>
+                        <p className="col-4 my-auto">{weatherData.forecast.forecastday[0].hour[12].temp_c} &#8451; </p>
+                        <input className="col-1 my-auto" type='checkbox' id="knitted"></input>
                     
                 </div>
             : null}
